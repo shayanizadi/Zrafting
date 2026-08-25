@@ -63,17 +63,14 @@
 ------------------------------------ */
 
 @theme inline {
-  /* فونت‌های اصلی پروژه */
-  --font-title: "DANAHeavy", sans-serif;        /* عنوان‌های بزرگ */
-  --font-body: "IRANYekanRound", sans-serif;    /* متن‌ها */
-  --font-button: "PoppinsBold", sans-serif;     /* دکمه‌ها */
+  --font-title: "DANAHeavy", sans-serif;
+  --font-body: "IRANYekanRound", sans-serif;
+  --font-button: "PoppinsBold", sans-serif;
 
-  /* فونت‌های اضافی برای استفاده دلخواه */
-  --font-vazir: "VazirBlack", sans-serif;       /* عنوان‌های خیلی بولد */
-  --font-estedad: "EstedadBlack", sans-serif;   /* عنوان‌های مدرن */
-  --font-sahel: "SahelBold", sans-serif;        /* عنوان‌های کارتونی و شاد */
+  --font-vazir: "VazirBlack", sans-serif;
+  --font-estedad: "EstedadBlack", sans-serif;
+  --font-sahel: "SahelBold", sans-serif;
 
-  /* فونت نستعلیق انگلیسی برای دکمه‌ها و لوگو */
   --font-nastaligh-en: "NastalighEN", cursive;
 }
 
@@ -98,21 +95,31 @@
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
-/* قفل کامل سایت روی حالت دسکتاپ */
-.desktop-only {
-  /* عرض صفحه را مجبور می‌کنیم همیشه بزرگ باشد */
-  width: 100vw !important;
-  min-width: 1024px !important;
-  overflow-x: auto !important;
+
+/* ------------------------------------
+   قفل کامل سایت روی حالت دسکتاپ
+------------------------------------ */
+
+/* جلوگیری از اسکرول افقی */
+html, body {
+  overflow-x: hidden !important;
 }
 
-/* تمام Breakpoint های Tailwind را بی‌اثر می‌کنیم */
+/* قفل کردن viewport روی دسکتاپ */
+.desktop-only {
+  width: 1024px !important;
+  min-width: 1024px !important;
+  max-width: 1024px !important;
+  overflow-x: hidden !important;
+  margin: 0 auto !important;
+}
+
+/* بی‌اثر کردن Breakpoint های Tailwind */
 .desktop-only * {
-  /* هر چیزی که Tailwind برای موبایل تنظیم کرده را خنثی می‌کنیم */
   max-width: none !important;
 }
 
-/* کلاس‌های موبایل را غیرفعال می‌کنیم */
+/* غیرفعال کردن کلاس‌های موبایل */
 .desktop-only .md\:hidden,
 .desktop-only .hidden {
   display: none !important;
