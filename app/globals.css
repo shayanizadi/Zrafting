@@ -98,17 +98,9 @@ html, body {
   overflow-x: hidden !important;
 }
 
-/* فقط هدر را مجبور می‌کنیم همیشه نسخه دسکتاپ باشد */
+/* فقط نسخه موبایل هدر را غیرفعال می‌کنیم */
 .desktop-header .md\:hidden {
   display: none !important;
-}
-
-.desktop-header .md\:flex {
-  display: flex !important;
-}
-
-.desktop-header .md\:block {
-  display: block !important;
 }
 
 /* جلوگیری از زوم */
