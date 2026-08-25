@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* ------------------------------
-   فونت‌ها
------------------------------- */
+/* ------------------------------------
+   فونت‌ها (همه این‌ها یک‌بار برای همیشه)
+------------------------------------ */
 
 /* IRANYekanRound */
 @font-face {
@@ -23,6 +23,27 @@
   font-weight: 900;
 }
 
+/* Vazir Black */
+@font-face {
+  font-family: "VazirBlack";
+  src: url("/font/Vazir-Black.woff2") format("woff2");
+  font-weight: 900;
+}
+
+/* Estedad Black */
+@font-face {
+  font-family: "EstedadBlack";
+  src: url("/font/Estedad-Black.woff2") format("woff2");
+  font-weight: 900;
+}
+
+/* Sahel Bold */
+@font-face {
+  font-family: "SahelBold";
+  src: url("/font/Sahel-Bold.woff2") format("woff2");
+  font-weight: 700;
+}
+
 /* Poppins Bold */
 @font-face {
   font-family: "PoppinsBold";
@@ -30,19 +51,25 @@
   font-weight: 700;
 }
 
-/* ------------------------------
-   تعریف فونت‌ها برای Tailwind v4
------------------------------- */
+/* ------------------------------------
+   تعریف متغیرهای فونت برای Tailwind v4
+------------------------------------ */
 
 @theme inline {
-  --font-title: "DANAHeavy", sans-serif;     /* فونت عنوان */
-  --font-body: "IRANYekanRound", sans-serif; /* فونت متن */
-  --font-button: "PoppinsBold", sans-serif;  /* فونت دکمه‌ها */
+  /* فونت‌های اصلی پروژه */
+  --font-title: "DANAHeavy", sans-serif;        /* عنوان‌های بزرگ */
+  --font-body: "IRANYekanRound", sans-serif;    /* متن‌ها */
+  --font-button: "PoppinsBold", sans-serif;     /* دکمه‌ها */
+
+  /* فونت‌های اضافی برای استفاده دلخواه */
+  --font-vazir: "VazirBlack", sans-serif;       /* عنوان‌های خیلی بولد */
+  --font-estedad: "EstedadBlack", sans-serif;   /* عنوان‌های مدرن */
+  --font-sahel: "SahelBold", sans-serif;        /* عنوان‌های کارتونی و شاد */
 }
 
-/* ------------------------------
+/* ------------------------------------
    انیمیشن‌ها
------------------------------- */
+------------------------------------ */
 
 @keyframes titleFloat {
   0% { transform: translateY(0); }
