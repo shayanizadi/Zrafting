@@ -1,10 +1,9 @@
 @import "tailwindcss";
 
 /* ------------------------------------
-   فونت‌ها (همه این‌ها یک‌بار برای همیشه)
+   فونت‌ها
 ------------------------------------ */
 
-/* IRANYekanRound */
 @font-face {
   font-family: "IRANYekanRound";
   src: url("/font/IRANYekanRound-Regular.woff2") format("woff2");
@@ -16,42 +15,36 @@
   font-weight: 700;
 }
 
-/* DANA Heavy */
 @font-face {
   font-family: "DANAHeavy";
   src: url("/font/Dana-Heavy.woff2") format("woff2");
   font-weight: 900;
 }
 
-/* Vazir Black */
 @font-face {
   font-family: "VazirBlack";
   src: url("/font/Vazir-Black.woff2") format("woff2");
   font-weight: 900;
 }
 
-/* Estedad Black */
 @font-face {
   font-family: "EstedadBlack";
   src: url("/font/Estedad-Black.woff2") format("woff2");
   font-weight: 900;
 }
 
-/* Sahel Bold */
 @font-face {
   font-family: "SahelBold";
   src: url("/font/Sahel-Bold.woff2") format("woff2");
   font-weight: 700;
 }
 
-/* Poppins Bold */
 @font-face {
   font-family: "PoppinsBold";
   src: url("/font/Poppins-Bold.woff2") format("woff2");
   font-weight: 700;
 }
 
-/* English Nastaligh (Great Vibes) */
 @font-face {
   font-family: "NastalighEN";
   src: url("/font/GreatVibes-Regular.woff2") format("woff2");
@@ -59,7 +52,7 @@
 }
 
 /* ------------------------------------
-   تعریف متغیرهای فونت برای Tailwind v4
+   Tailwind v4 Font Variables
 ------------------------------------ */
 
 @theme inline {
@@ -97,7 +90,7 @@
 }
 
 /* ------------------------------------
-   قفل کامل سایت روی حالت دسکتاپ
+   قفل نسخه موبایل بدون خراب کردن ساختار
 ------------------------------------ */
 
 /* جلوگیری از اسکرول افقی */
@@ -105,39 +98,20 @@ html, body {
   overflow-x: hidden !important;
 }
 
-/* قفل کردن viewport روی دسکتاپ */
-.desktop-only {
-  width: 1024px !important;
-  min-width: 1024px !important;
-  max-width: 1024px !important;
-  overflow-x: hidden !important;
-  margin: 0 auto !important;
-}
-
-/* بی‌اثر کردن Breakpoint های Tailwind */
-.desktop-only * {
-  max-width: none !important;
-}
-
-/* غیرفعال کردن کلاس‌های موبایل */
-.desktop-only .md\:hidden,
-.desktop-only .hidden {
+/* فقط هدر را مجبور می‌کنیم همیشه نسخه دسکتاپ باشد */
+.desktop-header .md\:hidden {
   display: none !important;
 }
 
-.desktop-only .md\:flex,
-.desktop-only .flex {
+.desktop-header .md\:flex {
   display: flex !important;
 }
 
-.desktop-only .md\:block,
-.desktop-only .block {
+.desktop-header .md\:block {
   display: block !important;
 }
 
-/* جلوگیری از فعال شدن نسخه موبایل */
-@media (max-width: 1024px) {
-  .desktop-only {
-    width: 1024px !important;
-  }
+/* جلوگیری از زوم */
+html {
+  touch-action: manipulation;
 }

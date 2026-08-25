@@ -4,7 +4,8 @@ import { useEffect } from "react";
 
 export default function DesktopLock() {
   useEffect(() => {
-    document.documentElement.classList.add("desktop-only");
+    const header = document.querySelector("header");
+    if (header) header.classList.add("desktop-header");
   }, []);
 
   return null;
