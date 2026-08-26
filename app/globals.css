@@ -178,3 +178,9 @@ body {
     background-image: url("/img/banner1.jpg");
   }
 }
+@font-face {
+  font-family: "Nastaliq";
+  src: url("/fonts/iranNastaliq.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

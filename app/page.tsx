@@ -49,32 +49,30 @@ const SLIDES = [
 ];
 
 /* -----------------------------------------------------------
-   🎬 Hero Slider (Final Fixed Version)
+   🎬 Hero Slider (No Buttons — Ultra Stable)
 ----------------------------------------------------------- */
 
 function HeroSlider() {
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(false);
 
+  // اسلاید خودکار — بدون وابستگی به index
   useEffect(() => {
     const timer = setInterval(() => {
-      nextSlide();
+      setFade(true);
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % SLIDES.length);
+        setFade(false);
+      }, 350);
     }, 7000);
+
     return () => clearInterval(timer);
-  }, [index]);
+  }, []);
 
-  const nextSlide = () => {
+  const goToSlide = (i: number) => {
     setFade(true);
     setTimeout(() => {
-      setIndex((prev) => (prev + 1) % SLIDES.length);
-      setFade(false);
-    }, 350);
-  };
-
-  const prevSlide = () => {
-    setFade(true);
-    setTimeout(() => {
-      setIndex((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+      setIndex(i);
       setFade(false);
     }, 350);
   };
@@ -88,7 +86,7 @@ function HeroSlider() {
       <img
         src={current.src}
         className={`absolute inset-0 w-full h-full object-cover transition-all duration-[900ms] ${
-          fade ? "opacity-0 scale-[1.03]" : "opacity-100 scale-[1]"
+          fade ? "opacity-0 scale-[1.05]" : "opacity-100 scale-[1]"
         }`}
       />
 
@@ -139,7 +137,7 @@ function HeroSlider() {
           {SLIDES.map((_, i) => (
             <button
               key={i}
-              onClick={() => setIndex(i)}
+              onClick={() => goToSlide(i)}
               className={`w-2.5 h-2.5 rounded-full transition-all ${
                 i === index
                   ? "bg-[var(--color-accent)] scale-125"
@@ -149,21 +147,6 @@ function HeroSlider() {
           ))}
         </div>
       </div>
-
-      {/* دکمه‌های قبلی/بعدی */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-md border border-white/30 transition-all"
-      >
-        ‹
-      </button>
-
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-md border border-white/30 transition-all"
-      >
-        ›
-      </button>
     </section>
   );
 }
