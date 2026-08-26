@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TimelinePinned from "@/components/TimelinePinned";
 
-
 /* -----------------------------------------------------------
    🎨 Theme & Helpers
 ----------------------------------------------------------- */
@@ -112,10 +111,24 @@ function HeroSlider() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <button className="px-6 py-2.5 rounded-full bg-blue-600 text-white text-xs md:text-sm hover:bg-blue-700 transition-all shadow-md">
+            {/* رزرو سریع تور → اسکرول به بخش رزرو سریع */}
+            <button
+              onClick={() => {
+                const el = document.getElementById("fast-booking");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-6 py-2.5 rounded-full bg-blue-600 text-white text-xs md:text-sm hover:bg-blue-700 transition-all shadow-md"
+            >
               رزرو سریع تور
             </button>
-            <button className="px-6 py-2.5 rounded-full border border-slate-300 text-slate-800 text-xs md:text-sm hover:bg-slate-100 transition-all">
+
+            {/* مشاهده تورها → صفحه تورها */}
+            <button
+              onClick={() => {
+                window.location.href = "/tours";
+              }}
+              className="px-6 py-2.5 rounded-full border border-slate-300 text-slate-800 text-xs md:text-sm hover:bg-slate-100 transition-all"
+            >
               مشاهده تورها
             </button>
           </div>
@@ -171,10 +184,24 @@ function IntroSection() {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <button className="px-6 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-md text-sm">
+            {/* رزرو سریع تور → اسکرول به بخش رزرو سریع */}
+            <button
+              onClick={() => {
+                const el = document.getElementById("fast-booking");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-6 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-md text-sm"
+            >
               رزرو سریع تور
             </button>
-            <button className="px-6 py-3 rounded-xl border border-slate-300 text-slate-800 hover:bg-slate-100 transition-all text-sm">
+
+            {/* مشاهده تورهای فعال → صفحه تورها */}
+            <button
+              onClick={() => {
+                window.location.href = "/tours";
+              }}
+              className="px-6 py-3 rounded-xl border border-slate-300 text-slate-800 hover:bg-slate-100 transition-all text-sm"
+            >
               مشاهده تورهای فعال
             </button>
           </div>
@@ -245,6 +272,7 @@ function IntroSection() {
 
 const TOURS = [
   {
+    id: 1,
     title: "تور رفتینگ زاینده‌رود — هیجان متوسط",
     level: "مناسب برای خانواده‌ها و گروه‌های دوستانه",
     price: "1,200,000 تومان",
@@ -253,6 +281,7 @@ const TOURS = [
     image: "/img/tour1.jpg",
   },
   {
+    id: 2,
     title: "تور رفتینگ حرفه‌ای — موج‌های خروشان",
     level: "مناسب برای عاشقان هیجان و آدرنالین",
     price: "1,800,000 تومان",
@@ -261,6 +290,7 @@ const TOURS = [
     image: "/img/tour2.jpg",
   },
   {
+    id: 3,
     title: "تور رفتینگ + طبیعت‌گردی",
     level: "ترکیب رفتینگ، پیاده‌روی و عکاسی",
     price: "2,100,000 تومان",
@@ -291,9 +321,9 @@ function TourCardsSection() {
       </div>
 
       <div className="grid md:grid-cols-3 gap-8">
-        {TOURS.map((tour, i) => (
+        {TOURS.map((tour) => (
           <div
-            key={i}
+            key={tour.id}
             className="group bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-xl transition-all"
           >
             <div className="relative h-40 bg-slate-200">
@@ -326,10 +356,23 @@ function TourCardsSection() {
               </div>
 
               <div className="mt-4 flex gap-2">
-                <button className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-xs hover:bg-blue-700 transition-all">
+                {/* رزرو این تور → صفحه جزئیات تور */}
+                <button
+                  onClick={() => {
+                    window.location.href = `/tours/${tour.id}`;
+                  }}
+                  className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-xs hover:bg-blue-700 transition-all"
+                >
                   رزرو این تور
                 </button>
-                <button className="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-800 text-xs hover:bg-slate-100 transition-all">
+
+                {/* جزئیات بیشتر → صفحه جزئیات تور */}
+                <button
+                  onClick={() => {
+                    window.location.href = `/tours/${tour.id}`;
+                  }}
+                  className="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-800 text-xs hover:bg-slate-100 transition-all"
+                >
                   جزئیات بیشتر
                 </button>
               </div>
@@ -388,7 +431,10 @@ function FeaturesSection() {
             key={i}
             className="bg-white rounded-2xl p-5 shadow-md border border-slate-200 flex flex-col gap-3 hover:-translate-y-1 hover:shadow-lg transition-all"
           >
-            <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ backgroundColor: `${f.iconColor}22` }}>
+            <div
+              className="w-9 h-9 rounded-full flex items-center justify-center"
+              style={{ backgroundColor: `${f.iconColor}22` }}
+            >
               <svg width="18" height="18" fill="currentColor" style={{ color: f.iconColor }}>
                 <path d="M3 9l4 4 8-8-1.5-1.5L7 10 4.5 7.5z" />
               </svg>
@@ -409,7 +455,7 @@ function FeaturesSection() {
 function PhotosSection() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-16">
-      <div className="flex items-center justify-between mb-8 gap-4">
+      <div className="flex items-center justifyبین mb-8 gap-4">
         <div>
           <h2 className="text-3xl font-bold text-slate-900 mb-2">
             لحظه‌های خروشان روی موج‌ها
@@ -452,7 +498,7 @@ function PhotosSection() {
 
 function FastBookingSection() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16">
+    <section id="fast-booking" className="max-w-7xl mx-auto px-6 py-16">
       <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 flex flex-col md:flex-row gap-8 items-center">
         <div className="flex-1">
           <div className="inline-flex items-center gap-2 mb-3">
@@ -477,10 +523,24 @@ function FastBookingSection() {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <button className="px-6 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-md text-sm">
+            {/* رزرو سریع تور → اسکرول به همین بخش */}
+            <button
+              onClick={() => {
+                const el = document.getElementById("fast-booking");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-6 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-md text-sm"
+            >
               رزرو سریع تور
             </button>
-            <button className="px-6 py-3 rounded-xl border border-slate-300 text-slate-800 hover:bg-slate-100 transition-all text-sm">
+
+            {/* مشاوره قبل از رزرو → صفحه تورها */}
+            <button
+              onClick={() => {
+                window.location.href = "/tours";
+              }}
+              className="px-6 py-3 rounded-xl border border-slate-300 text-slate-800 hover:bg-slate-100 transition-all text-sm"
+            >
               مشاوره قبل از رزرو
             </button>
           </div>

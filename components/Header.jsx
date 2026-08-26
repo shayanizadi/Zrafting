@@ -36,7 +36,7 @@ export default function Header() {
             <span className="text-black font-bold text-lg">Z</span>
           </div>
 
-          {/* عنوان بدون نستعلیق */}
+          {/* عنوان تایپ‌شونده */}
           <h1 className="text-xl md:text-2xl font-bold text-black tracking-wide whitespace-nowrap">
             {typed}
             <span className="animate-pulse">|</span>
@@ -84,6 +84,25 @@ export default function Header() {
           <Link href="/about" className="hover:text-purple-500 transition-all hover:scale-105">
             درباره ما
           </Link>
+
+          {/* 🔥 دکمه‌های ورود و ثبت‌نام */}
+          <div className="flex items-center gap-3">
+
+            <Link
+              href="/signin"
+              className="px-4 py-2 rounded-xl border border-slate-300 text-slate-800 hover:bg-slate-100 transition-all text-sm"
+            >
+              ورود
+            </Link>
+
+            <Link
+              href="/signup"
+              className="px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm shadow-md"
+            >
+              ثبت‌نام
+            </Link>
+
+          </div>
         </nav>
 
         {/* دکمه موبایل */}
@@ -95,6 +114,7 @@ export default function Header() {
         </button>
       </div>
 
+      {/* منوی موبایل */}
       {open && (
         <div className="md:hidden bg-white/90 backdrop-blur-xl border-t border-slate-200 shadow-lg">
           <nav className="flex flex-col p-4 text-black font-medium gap-4">
@@ -128,6 +148,24 @@ export default function Header() {
             <Link href="/about" onClick={() => setOpen(false)} className="hover:text-purple-500">
               درباره ما
             </Link>
+
+            {/* 🔥 دکمه‌های ورود و ثبت‌نام موبایل */}
+            <Link
+              href="/signin"
+              onClick={() => setOpen(false)}
+              className="px-4 py-2 rounded-xl border border-slate-300 text-slate-800 hover:bg-slate-100 transition-all text-sm"
+            >
+              ورود
+            </Link>
+
+            <Link
+              href="/signup"
+              onClick={() => setOpen(false)}
+              className="px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm shadow-md"
+            >
+              ثبت‌نام
+            </Link>
+
           </nav>
         </div>
       )}
